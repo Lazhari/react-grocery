@@ -1,29 +1,18 @@
-console.log('Hello from jsx !');
+'use strict';
 
-var React = require('react');
-var ReactDom = require('react-dom');
-var GroceryItemList = require('./components/GrocyItemList.jsx');
+const React = require('react');
+const ReactDom = require('react-dom');
+const GroceryItemList = require('./components/GrocyItemList.jsx');
+const GroceryItemStore = require('./stores/GroceryItemStore.jsx');
 
-var initial = [
-    {
-        "purchased": false,
-        "name": "Adela Reese"
-    },
-    {
-        "purchased": false,
-        "name": "Ferguson Estrada"
-    },
-    {
-        "purchased": true,
-        "name": "Ingram Burton"
-    },
-    {
-        "purchased": false,
-        "name": "Nanette Anderson"
-    },
-    {
-        "purchased": false,
-        "name": "Celeste Britt"
-    }
-];
-ReactDom.render(<GroceryItemList items={initial} />, document.getElementById('app'));
+let initial = GroceryItemStore.getItems();
+
+function render() {
+    ReactDom.render(<GroceryItemList items={initial} />, document.getElementById('app'));
+}
+
+GroceryItemStore.onChange(function(items) {
+    initial = items;
+    render();
+});
+render();
