@@ -2,7 +2,7 @@
 
 const React = require('react');
 const ReactDom = require('react-dom');
-const GroceryItemList = require('./components/GrocyItemList.jsx');
+const GroceryItemList = require('./components/GroceryItemList.jsx');
 const GroceryItemStore = require('./stores/GroceryItemStore.jsx');
 
 let initial = GroceryItemStore.getItems();

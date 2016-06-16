@@ -1,6 +1,5 @@
 'use strict';
 const dispatcher = require('../dispatcher');
-console.log(GroceryItemStore);
 function GroceryItemStore() {
     var items = [
         {
