@@ -1,6 +1,6 @@
 'use strict';
 const guid = require('guid');
-var listeners = {};
+const listeners = {};
 
 module.exports = {
     register: function (callback) {
@@ -10,8 +10,8 @@ module.exports = {
     },
     dispatche: function (payload) {
         console.info('Despatching ...', payload);
-        for(var id in listeners) {
-            var listener = listeners[id];
+        for(let id in listeners) {
+            let listener = listeners[id];
             listener(payload);
         }
     }

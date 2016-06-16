@@ -5,22 +5,18 @@ const action = require('../actions/GrocyItemCreator.jsx');
 
 module.exports = React.createClass({
     getInitialState: function() {
-        return {input: ""}
+        return {input: ""};
     },
-    handleInputName: function (e) {
-        this.setState({input: e.target.value})
+    handleInputName: function(e) {
+        this.setState({input: e.target.value});
     },
-    addItem: function (e) {
+    addItem: function(e) {
         e.preventDefault();
         //console.log("Adding item !", this.state.input);
-        action.add({
-            name: this.state.input
-        });
-        this.setState({
-            input: ''
-        });
+        action.add({name: this.state.input});
+        this.setState({input: ''});
     },
-    render: function () {
+    render: function() {
         return (
             <div className="grocery-additem">
                 <form onSubmit={this.addItem}>
@@ -28,6 +24,6 @@ module.exports = React.createClass({
                     <button>Add Item</button>
                 </form>
             </div>
-        )
+        );
     }
 });

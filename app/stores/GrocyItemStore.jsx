@@ -1,2 +1,2 @@
 'use strict';
-var dispatcher = require('../dispatcher');
+const dispatcher = require('../dispatcher');

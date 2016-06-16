@@ -26,4 +26,4 @@ var initial = [
         "name": "Celeste Britt"
     }
 ];
-ReactDom.render(<GroceryItemList items={initial} />, app);
+ReactDom.render(<GroceryItemList items={initial} />, document.getElementById('app'));
