@@ -1,5 +1,7 @@
 'use strict';
 const dispatcher = require('../dispatcher');
+const _ = require('underscore');
+
 function GroceryItemStore() {
     var items = [
         {
@@ -38,6 +40,13 @@ function GroceryItemStore() {
         items.push(item);
         triggerListeners();
     }
+    function deleteGroceryItem(item) {
+        let index = _.findIndex( items,(_item) => {
+            return _item.name === item.name;
+        });
+        items.shift(index, 1);
+        triggerListeners();
+    }
 
     function triggerListeners() {
         listeners.forEach((listener) => {
@@ -51,6 +60,10 @@ function GroceryItemStore() {
             switch(split[1]) {
                 case 'add':
                     addGroceryItem(event.payload);
+                    break;
+                case 'delete':
+                    deleteGroceryItem(event.payload);
+                    break;
             }
         }
     });

@@ -1,7 +1,11 @@
 'use strict';
 const React = require('react');
-
+const action = require('../actions/GroceryItemCreator.jsx');
 module.exports = React.createClass({
+    delete: function(e) {
+        e.preventDefault();
+        action.delete(this.props.item);
+    },
     render: function() {
         return (
             <li className="list-group-item">
@@ -14,9 +18,9 @@ module.exports = React.createClass({
                         </h3>
                     </div>
                     <div className="col-sm-2">
-                        <form className="pull-right">
+                        <form className="pull-right" onSubmit={this.delete}>
                             <button className="btn btn-danger">
-                                <i className="glyphicon glyphicon-remove"></i>
+                                <i className="glyphicon glyphicon-trash"></i>
                             </button>
                         </form>
                     </div>
