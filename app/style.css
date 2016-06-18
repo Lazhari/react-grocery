@@ -1,3 +1,6 @@
+body {
+    margin-top: 20px;
+}
 .strickthrough {
     text-decoration: line-through;
     color: slategray;

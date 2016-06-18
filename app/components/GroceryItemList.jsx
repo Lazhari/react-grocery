@@ -8,15 +8,17 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div>
-                <h1>Grocery Listify</h1>
-                <div>
+                <ul className="list-group">
+                    <li className="list-group-item text-center">
+                        <h3>Grocery Listify</h3>
+                    </li>
                     {this.props.items.map((item, index) => {
                         return (
                             <GroceryItem item={item} key={"item" + index}></GroceryItem>
                         );
                     })
 }
-                </div>
+                </ul>
                 <GroceryListAddItem></GroceryListAddItem>
             </div>
         );

@@ -18,10 +18,14 @@ module.exports = React.createClass({
     },
     render: function() {
         return (
-            <div className="grocery-additem">
+            <div className="panel">
                 <form onSubmit={this.addItem}>
-                    <input value={this.state.input} onChange={this.handleInputName}/>
-                    <button>Add Item</button>
+                    <div className="form-group">
+                        <input className="form-control" value={this.state.input} onChange={this.handleInputName}/>
+                    </div>
+                    <div className="text-center">
+                        <button className="btn btn-block btn-success" type="submit">Add Item</button>
+                    </div>
                 </form>
             </div>
         );
