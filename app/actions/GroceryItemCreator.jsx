@@ -8,5 +8,11 @@ module.exports = {
     },
     delete: function(item) {
         dispatcher.dispatche({payload: item, type: "grocery-item:delete"});
+    },
+    buy: function(item) {
+        dispatcher.dispatche({payload: item, type: "grocery-item:buy"});
+    },
+    unbuy: function(item) {
+        dispatcher.dispatche({payload: item, type: "grocery-item:unbuy"});
     }
 };
