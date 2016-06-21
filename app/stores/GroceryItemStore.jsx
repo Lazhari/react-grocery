@@ -73,7 +73,7 @@ function GroceryItemStore() {
                     deleteGroceryItem(event.payload);
                     break;
                 case 'buy':
-                    setGroceryItemBought(event.payload,true);
+                    setGroceryItemBought(event.payload, true);
                     break;
                 case 'unbuy':
                     setGroceryItemBought(event.payload, false);
