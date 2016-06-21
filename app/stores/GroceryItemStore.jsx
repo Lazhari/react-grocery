@@ -2,29 +2,16 @@
 const dispatcher = require('../dispatcher');
 const _ = require('underscore');
 
+const RestHelper = require('../helpers/RestHelper');
+
 function GroceryItemStore() {
-    var items = [
-        {
-            "purchased": false,
-            "name": "Adela Reese"
-        },
-        {
-            "purchased": false,
-            "name": "Ferguson Estrada"
-        },
-        {
-            "purchased": true,
-            "name": "Ingram Burton"
-        },
-        {
-            "purchased": false,
-            "name": "Nanette Anderson"
-        },
-        {
-            "purchased": false,
-            "name": "Celeste Britt"
-        }
-    ];
+    var items = [];
+
+    RestHelper.get('api/items')
+        .then(function(data) {
+            items = data;
+            triggerListeners();
+        });
 
     var listeners = [];
 
