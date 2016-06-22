@@ -25,5 +25,10 @@ module.exports = function (app) {
     app.route('/api/items')
         .get((req, res) => {
             return res.send(items);
+        })
+        .post((req, res) => {
+            let item = req.body;
+            items.push(item);
+            return res.send('You item has been added!');
         });
 };

@@ -25,6 +25,7 @@ function GroceryItemStore() {
 
     function addGroceryItem(item) {
         items.push(item);
+        RestHelper.post('api/items', item);
         triggerListeners();
     }
     function deleteGroceryItem(item) {
