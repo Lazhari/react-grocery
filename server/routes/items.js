@@ -25,10 +25,14 @@ module.exports = function(app) {
         });
     app.route('/api/items/:id')
         .delete((req, res) => {
-            GroceryItem.find({
+            GroceryItem.remove({
                 _id: req.params.id
-            }).remove();
-            return res.status(200);
+            }, (err) => {
+                if(err) {
+                    return res.status(500).send(err.message);
+                }
+                return res.status(200);
+            });
         })
         .patch((req, res) => {
             GroceryItem.findOne({
