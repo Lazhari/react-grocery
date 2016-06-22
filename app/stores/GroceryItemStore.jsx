@@ -25,13 +25,14 @@ function GroceryItemStore() {
 
     function addGroceryItem(item) {
         items.push(item);
-        RestHelper.post('api/items', item);
+        RestHelper.post('/api/items', item);
         triggerListeners();
     }
     function deleteGroceryItem(item) {
         let index = _.findIndex( items,(_item) => {
             return _item.name === item.name;
         });
+        RestHelper.del('/api/items/'+ item._id);
         items.shift(index, 1);
         triggerListeners();
     }
@@ -41,6 +42,7 @@ function GroceryItemStore() {
             return _item.name === item.name;
         });
         items[index].purchased = isBought || false;
+        RestHelper.patch('/api/items/' + item._id, item);
         triggerListeners();
     }
 
