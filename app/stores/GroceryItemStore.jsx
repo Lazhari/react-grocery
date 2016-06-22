@@ -24,16 +24,18 @@ function GroceryItemStore() {
     }
 
     function addGroceryItem(item) {
-        items.push(item);
-        RestHelper.post('/api/items', item);
-        triggerListeners();
+        RestHelper.post('/api/items', item)
+            .then((item) => {
+                items.push(item);
+                triggerListeners();
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
     function deleteGroceryItem(item) {
-        let index = _.findIndex( items,(_item) => {
-            return _item.name === item.name;
-        });
+        items = _.without(items, _.findWhere(items, {_id: item._id}));
         RestHelper.del('/api/items/'+ item._id);
-        items.shift(index, 1);
         triggerListeners();
     }
 

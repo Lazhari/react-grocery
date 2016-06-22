@@ -14,13 +14,14 @@ module.exports = function(app) {
         })
         .post((req, res) => {
             let item = req.body;
-            new GroceryItem(item).save((err) => {
+            item = new GroceryItem(item);
+            item.save((err) => {
                 if (err) {
                     return res.status(500).send({
                         message: err.message
                     });
                 }
-                return res.status(300).send();
+                return res.status(201).send(item);
             });
         });
     app.route('/api/items/:id')
@@ -42,7 +43,7 @@ module.exports = function(app) {
                     item[key] = req.body[key];
                 }
                 item.save();
-                return res.status(200);
+                return res.status(200, item);
             });
         });
 };
